@@ -1,36 +1,42 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.jenkins.plugins</groupId>
-  <artifactId>warnings-ng-parent</artifactId>
-  <packaging>pom</packaging>
+  <groupId>edu.hm.hafner</groupId>
+  <artifactId>warnings-ng-plugin-devenv</artifactId>
   <version>UNVERSIONED</version>
 
-  <name>Aggregator for Warnings Plugin</name>
+  <packaging>pom</packaging>
 
-  <modules>
-    <module>plugin</module>
-    <module>ui-tests</module>
-  </modules>
+  <name>Warnings Next Generation Plugin development environment</name>
+  <description>Development environment for Jenkins' Warnings Next Generation Plugin.
+    Reduces the initial ramp-up time for new contributors.
+  </description>
+
+  <licenses>
+    <license>
+      <name>MIT license</name>
+      <comments>All source code is copyrighted by Ullrich Hafner and licensed under the MIT license.</comments>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Ullrich Hafner</name>
+      <id>uhafner</id>
+      <email>ullrich.hafner@gmail.com</email>
+    </developer>
+  </developers>
 
   <properties>
     <java.version>1.8</java.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
   </properties>
 
   <build>
-    <plugins>
-      <!-- Do not deploy anything except for the plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>${maven-deploy-plugin.version}</version>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-    </plugins>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -46,4 +52,35 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <modules>
+    <module>codingstyle</module>
+    <module>analysis-model</module>
+    <module>analysis-model-api-plugin</module>
+    <module>autograding-plugin</module>
+    <module>forensics-api-plugin</module>
+    <module>git-forensics-plugin</module>
+    <module>warnings-ng-plugin</module>
+
+    <module>acceptance-test-harness</module>
+  </modules>
+
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+    <repository>
+      <id>incrementals.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/incrementals/</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
 </project>
